@@ -1,0 +1,19 @@
+<h1>Twitter Search</h1>
+
+<%= form_tag("/", method: "get") do %>
+  <%= label_tag(:search, "Search for:") %>
+  <%= text_field_tag(:search) %>
+  <%= submit_tag("Search", name: nil) %>
+<% end %>
+
+<br />
+
+<% if @results.present? %>
+  <% @results.each_with_index do |result, index| %>
+    <%= index+1 %>. <%= result.text %>
+    <br />
+  <% end %>
+<% else %>
+  Type something to search :)
+<% end %>
+
